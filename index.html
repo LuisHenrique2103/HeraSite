@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hera Beauty — Nanopigmentação Labial · Matosinhos, Porto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+    --black:#000;--off-white:#F5F5F5;--mauve:#A85F5F;--mauve-dark:#8B4C4C;--mauve-light:#C27878;
+    --g01:#111;--g02:#1a1a1a;--g03:#2a2a2a;
+    --muted:rgba(245,245,245,.45);--dim:rgba(245,245,245,.65);
+    --serif:'Playfair Display',serif;--sans:'Montserrat',sans-serif;
+    --ease:cubic-bezier(.22,1,.36,1)
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--black);color:var(--off-white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.eyebrow{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--mauve);display:block}
+
+/* ——— NAVBAR liquid glass ——— */
+/* ——— NAVBAR ——— */
+#nav{
+    position:fixed;top:1.4rem;left:0;right:0;z-index:200;
+    padding:0 2rem;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    transition:top .4s var(--ease)
+}
+#nav.scrolled{top:.8rem}
+
+/* Logo — left */
+.nav-logo-wrap{justify-self:start;display:flex;align-items:center}
+.nav-logo-img{height:58px;width:58px;border-radius:12px;object-fit:contain;display:block;transition:opacity .25s}
+.nav-logo-img:hover{opacity:.8}
+
+/* Pill — sits in auto middle column = always page-centered */
+.nav-pill{
+    display:inline-flex;align-items:center;
+    padding:.78rem 1.8rem;
+    border-radius:50px;
+    background:rgba(10,4,4,.42);
+    backdrop-filter:blur(22px) saturate(160%);
+    -webkit-backdrop-filter:blur(22px) saturate(160%);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 4px 28px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.08),inset 0 -1px 0 rgba(0,0,0,.12);
+    transition:background .4s,box-shadow .4s;
+    white-space:nowrap
+}
+#nav.scrolled .nav-pill{background:rgba(8,3,3,.65);box-shadow:0 8px 36px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)}
+
+.nav-links{display:flex;list-style:none;gap:2.2rem}
+.nav-links a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--dim);transition:color .2s}
+.nav-links a:hover{color:var(--off-white)}
+.btn-short{display:none}
+.btn-long{display:inline}
+
+/* Button — right, outside pill */
+.nav-btn{
+    justify-self:end;
+    font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    padding:.72rem 1.4rem;
+    background:var(--mauve);color:var(--off-white);border-radius:50px;
+    transition:background .25s,transform .2s,box-shadow .25s;
+    white-space:nowrap
+}
+.nav-btn:hover{background:var(--mauve-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(168,95,95,.3)}
+
+.nav-ham{display:none;flex-direction:column;gap:6px;cursor:pointer;padding:10px;margin:-10px;z-index:210;position:relative}
+.nav-ham span{display:block;width:22px;height:1.5px;background:var(--off-white);border-radius:2px}
+
+/* ——— HERO ——— */
+#hero{position:relative;height:100svh;min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--black)}
+#hero::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
+.hero-bg{position:absolute;inset:0;z-index:0;background-image:url('imagens/HERO_site_hera.png');background-size:cover;background-position:center center}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 35% 52%, rgba(0,0,0,.82) 0%, rgba(0,0,0,.62) 30%, rgba(0,0,0,.28) 58%, rgba(0,0,0,.05) 75%, transparent 88%)}
+/* Transição suave hero → próxima secção */
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:220px;background:linear-gradient(to bottom,transparent 0%,rgba(17,17,17,.5) 45%,rgba(17,17,17,.85) 72%,#111 100%);z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;max-width:680px;padding:0 2rem}
+.hero-h1{font-family:var(--serif);font-size:clamp(2.6rem,5vw,4.6rem);font-weight:400;line-height:1.15;color:var(--off-white);letter-spacing:-.01em;margin-bottom:1.4rem;opacity:0;animation:fadeUp .9s var(--ease) .3s forwards}
+.hero-h1 .tw-l0,.hero-h1 .tw-line,.hero-h1 .tw-static{display:block}
+.hero-h1 .tw-line{font-style:normal;color:var(--off-white)}
+.hero-h1 em{font-style:italic;color:var(--mauve-light)}
+.tw-dot{font-style:italic;color:var(--mauve-light)}
+.tw-cursor{display:inline-block;color:var(--mauve-light);font-style:normal;font-family:var(--sans);font-weight:300;font-size:.75em;opacity:1;margin:0 .04em;animation:blink .75s step-end infinite}
+.tw-static{color:var(--off-white);font-style:normal}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-sub{font-size:.88rem;font-weight:300;color:var(--dim);line-height:1.75;margin-bottom:3rem;opacity:0;animation:fadeUp .9s var(--ease) .5s forwards}
+.hero-ctas{display:flex;flex-direction:column;align-items:center;gap:1.1rem;opacity:0;animation:fadeUp .9s var(--ease) .7s forwards}
+.btn-main{display:inline-flex;align-items:center;gap:.7rem;padding:1rem 2.2rem;background:var(--mauve);color:var(--off-white);font-size:.7rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;border-radius:5px;transition:background .3s,transform .25s,box-shadow .3s}
+.btn-main:hover{background:var(--mauve-dark);transform:translateY(-2px);box-shadow:0 12px 30px rgba(168,95,95,.22)}
+.btn-main svg{transition:transform .25s}
+.btn-main:hover svg{transform:translateX(3px)}
+.hero-wa{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,245,.32);transition:color .2s}
+.hero-wa:hover{color:rgba(245,245,245,.7)}
+.hero-wa span{color:var(--mauve-light)}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fadeIn 1s ease 1.2s forwards;white-space:nowrap}
+.scroll-hint span{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(168,95,95,.5),transparent);animation:scrollLine 2.2s ease infinite}
+
+/* ——— RESULTADOS ——— */
+#resultados{background:var(--g01);padding:7rem 0 4rem;overflow:hidden}
+.sec-head{padding:0 3.5rem;margin-bottom:3.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
+.sec-head-l .eyebrow{margin-bottom:.75rem}
+.sec-head-l h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.9rem);font-weight:400;color:var(--off-white);line-height:1.15}
+.sec-head>p{font-size:.78rem;color:var(--muted);font-weight:300;line-height:1.8;max-width:300px;text-align:right}
+.r-track{display:flex;gap:1.2rem;padding:.5rem 3.5rem 2.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none}
+.r-track::-webkit-scrollbar{display:none}
+.r-track.grabbing{cursor:grabbing}
+.r-card{flex:0 0 300px;scroll-snap-align:start;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--g02);transition:transform .4s var(--ease)}
+.r-card:hover{transform:translateY(-4px)}
+.r-card--ba{flex:0 0 420px}
+
+/* B&A real slider */
+.ba-slider{position:relative;width:100%;height:100%;overflow:hidden;touch-action:none}
+.ba-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.ba-before{background-image:url('imagens/Antes_1.png');background-size:cover;background-position:center top}
+.ba-before.b2{background-image:url('imagens/Antes_2.png');background-size:cover;background-position:center top}
+.ba-before.b3{background-image:url('imagens/Antes_3.png');background-size:cover;background-position:center}
+.ba-after{background-image:url('imagens/Depois_1.png');background-size:cover;background-position:center top;clip-path:inset(0 50% 0 0)}
+.ba-after.a2{background-image:url('imagens/Depois_2.png');background-size:cover;background-position:center top}
+.ba-after.a3{background-image:url('imagens/Depois_3.png');background-size:cover;background-position:center}
+/* ↑ Substituir backgrounds por: background-image:url('antes-X.jpg') / url('depois-X.jpg') */
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.7);transform:translateX(-50%);z-index:3;cursor:ew-resize}
+.ba-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:#fff;box-shadow:0 2px 14px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center}
+.ba-lbl{position:absolute;bottom:1rem;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:rgba(255,255,255,.6);background:rgba(0,0,0,.45);backdrop-filter:blur(6px);padding:.28rem .6rem;z-index:2;pointer-events:none}
+.ba-lbl-b{left:.9rem}
+.ba-lbl-a{right:.9rem}
+
+/* Quote/testimonial card — foto full, texto revela no hover/touch */
+.r-card--q{background:#100808;padding:0;overflow:hidden;cursor:pointer;position:relative}
+.q-img{position:absolute;inset:0;background-size:cover;background-position:center top;transition:transform .5s var(--ease)}
+.r-card--q:hover .q-img,.r-card--q.touched .q-img{transform:scale(1.04)}
+.q-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.5) 55%,rgba(0,0,0,.1) 100%);opacity:0;transition:opacity .4s var(--ease)}
+.r-card--q:hover .q-overlay,.r-card--q.touched .q-overlay{opacity:1}
+.q-body{position:absolute;bottom:0;left:0;right:0;padding:1.6rem;display:flex;flex-direction:column;gap:.65rem;transform:translateY(12px);opacity:0;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.r-card--q:hover .q-body,.r-card--q.touched .q-body{opacity:1;transform:translateY(0)}
+/* Hint strip always visible at bottom */
+.q-hint{position:absolute;bottom:0;left:0;right:0;padding:.9rem 1.4rem;background:linear-gradient(to top,rgba(0,0,0,.75),transparent);display:flex;align-items:center;gap:.5rem;transition:opacity .3s}
+.r-card--q:hover .q-hint,.r-card--q.touched .q-hint{opacity:0}
+.q-hint-stars{display:flex;gap:3px}
+.q-hint-text{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.stars{display:flex;gap:3px}
+.star{width:11px;height:11px;background:var(--mauve-light);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.q-text{font-family:var(--serif);font-size:1rem;font-style:italic;line-height:1.65;color:var(--off-white)}
+.q-name{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Video card */
+.r-card--vid{background:#0a0505;cursor:pointer}
+.vid-thumb{width:100%;height:100%;background:linear-gradient(160deg,#281212,#0d0606);display:flex;align-items:center;justify-content:center;position:relative}
+.play-ring{width:56px;height:56px;border-radius:50%;background:rgba(168,95,95,.88);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease),background .3s,box-shadow .3s}
+.r-card--vid:hover .play-ring,.dep-card--video .dep-media:hover .play-ring{transform:scale(1.1);background:var(--mauve);box-shadow:0 0 0 10px rgba(168,95,95,.1)}
+.play-ring svg{margin-left:3px}
+.vid-cap{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem 1.2rem;background:linear-gradient(to top,rgba(0,0,0,.7),transparent)}
+.vid-cap span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+
+/* Dots */
+.r-dots,.dep-dots{display:flex;align-items:center;gap:6px;padding:1.2rem 3.5rem 0}
+.r-dot,.dep-dot{height:2px;width:18px;background:rgba(255,255,255,.1);cursor:pointer;transition:all .3s var(--ease)}
+.r-dot.active,.dep-dot.active{width:34px;background:var(--mauve)}
+
+/* ——— MISSÃO ——— */
+#missao{background:var(--off-white);padding:9rem 3.5rem;color:#111;position:relative}
+#missao::before{content:'';position:absolute;top:0;left:3.5rem;right:3.5rem;height:1px;background:linear-gradient(to right,transparent,rgba(168,95,95,.25),transparent)}
+.missao-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:7rem;align-items:center}
+.missao-photo{position:relative}
+.missao-photo-inner{aspect-ratio:3/4;overflow:hidden;background:linear-gradient(170deg,#c4a0a0,#7a4a4a);background-image:url('imagens/Bia_hera.jpg');background-size:cover;background-position:center top}
+/* SUBSTITUIR: background-image:url('bia-studio.jpg');background-size:cover;background-position:center top */
+.missao-badge{position:absolute;bottom:-1.2rem;right:-1.5rem;background:var(--black);color:var(--off-white);padding:1.1rem 1.4rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;line-height:1.7}
+.missao-text .eyebrow{color:var(--mauve);margin-bottom:1.1rem}
+.missao-text h2{font-family:var(--serif);font-size:clamp(2rem,2.8vw,2.6rem);font-weight:400;color:#000;line-height:1.15;margin-bottom:1.8rem}
+.missao-quote{border-left:2px solid var(--mauve);padding-left:1.5rem;margin-bottom:1.8rem;font-family:var(--serif);font-size:1rem;font-style:italic;line-height:1.75;color:#555}
+.missao-text p{font-size:.82rem;line-height:1.9;color:#666;font-weight:300;margin-bottom:.9rem}
+
+/* Liquid glass value cards */
+.valores-list{margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,.08);display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.v-item{
+    padding:1.5rem 1.4rem;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,rgba(255,255,255,.72),rgba(255,255,255,.32));
+    backdrop-filter:blur(20px) saturate(200%);
+    -webkit-backdrop-filter:blur(20px) saturate(200%);
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.95);
+    border-bottom-color:rgba(255,255,255,.5);
+    box-shadow:0 6px 24px rgba(168,95,95,.08),0 1px 2px rgba(0,0,0,.05),inset 0 2px 0 rgba(255,255,255,1),inset 0 -1px 0 rgba(168,95,95,.06);
+    transition:transform .45s var(--ease),box-shadow .45s var(--ease),background .45s;
+    cursor:default
+}
+/* Top shine bar */
+.v-item::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(to right,transparent,rgba(255,255,255,.9) 40%,rgba(255,255,255,.9) 60%,transparent);border-radius:16px 16px 0 0}
+/* Shimmer sweep */
+.v-item::before{content:'';position:absolute;top:0;left:-80%;width:55%;height:100%;background:linear-gradient(to right,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-18deg);transition:left .65s var(--ease);pointer-events:none}
+.v-item:hover::before{left:160%}
+.v-item:hover{transform:translateY(-7px);background:linear-gradient(145deg,rgba(255,255,255,.85),rgba(255,255,255,.48));box-shadow:0 18px 45px rgba(168,95,95,.14),0 3px 8px rgba(0,0,0,.07),inset 0 2px 0 rgba(255,255,255,1)}
+.v-num{font-family:var(--serif);font-size:.68rem;font-style:italic;color:var(--mauve);margin-bottom:.5rem;display:block}
+.v-item h4{font-family:var(--serif);font-size:.95rem;font-weight:500;color:#111;margin-bottom:.35rem}
+.v-item p{font-size:.74rem;color:#777;line-height:1.65;margin:0}
+.v-item:hover p{color:#555}
+
+/* ——— DEPOIMENTOS ——— */
+#depoimentos{background:var(--black);padding:8rem 3.5rem}
+.sec-title{margin-bottom:3.5rem;text-align:center}
+.sec-title .eyebrow{margin-bottom:.8rem}
+.sec-title h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.9rem);font-weight:400;color:var(--off-white)}
+.dep-track{display:flex;gap:1.2rem;padding:.5rem 3.5rem 1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
+.dep-track::-webkit-scrollbar{display:none}
+.dep-track.grabbing{cursor:grabbing}
+.dep-card{flex:0 0 300px;scroll-snap-align:start;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015);overflow:hidden;transition:border-color .35s,transform .35s var(--ease)}
+.dep-card:hover{border-color:rgba(168,95,95,.2);transform:translateY(-4px)}
+.dep-media{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.dep-card--video .dep-media{background:linear-gradient(160deg,#2a1212,#0e0606)}
+/* SUBSTITUIR: background-image:url('dep-thumb.jpg');background-size:cover */
+.dep-card--print .dep-media{background:#0e0e0e}
+/* SUBSTITUIR: background-image:url('print.png');background-size:cover;background-position:top */
+.dep-print-ph{text-align:center;padding:2rem}
+.dep-print-ph .ico{font-size:2rem;opacity:.1;display:block;margin-bottom:.7rem}
+.dep-print-ph p{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.1)}
+.dep-body{padding:1.4rem 1.5rem 1.6rem;display:flex;flex-direction:column;gap:.65rem}
+.dep-body .q-text{font-size:.86rem}
+
+/* ——— SERVIÇOS — expandable cards ——— */
+#servicos{background:var(--off-white);padding:9rem 3.5rem;color:#111}
+.serv-label{margin-bottom:3.5rem}
+.serv-label .eyebrow{color:var(--mauve);margin-bottom:.8rem}
+.serv-label h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.9rem);font-weight:400;color:#000;letter-spacing:.01em}
+.serv-grid{max-width:1100px;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.s-card{position:relative;overflow:hidden;background:var(--black);color:var(--off-white);border:1px solid rgba(255,255,255,.06);border-radius:12px;cursor:pointer;transition:border-color .3s,transform .4s var(--ease),box-shadow .3s}
+.s-card:hover{border-color:rgba(168,95,95,.2);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.s-card.open{border-color:rgba(168,95,95,.3);transform:none;box-shadow:0 8px 28px rgba(168,95,95,.12)}
+.s-glow{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 30% 80%,rgba(168,95,95,.18),transparent 65%);transition:opacity .5s;pointer-events:none}
+.s-card:hover .s-glow,.s-card.open .s-glow{opacity:1}
+/* Front */
+.s-front{padding:1.8rem 1.8rem 1.4rem;position:relative;z-index:1}
+.s-front-top{margin-bottom:1.4rem}
+.s-tag-sm{display:inline-block;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--mauve-light);border:1px solid rgba(168,95,95,.28);padding:.22rem .6rem;margin-bottom:.9rem;background:rgba(168,95,95,.07)}
+.s-name{font-family:var(--serif);font-size:1.15rem;font-weight:400;line-height:1.22;color:var(--off-white)}
+.s-card--feat .s-name{font-size:1.38rem}
+.s-front-bot{display:flex;align-items:center;justify-content:space-between;margin-top:1.2rem}
+.s-price{font-family:var(--serif);font-size:1.75rem;font-weight:400;color:var(--off-white)}
+.s-card--feat .s-price{font-size:2.1rem}
+.s-toggle{width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .4s var(--ease),border-color .3s,background .3s;color:rgba(255,255,255,.55)}
+.s-card.open .s-toggle{transform:rotate(45deg);border-color:var(--mauve);background:rgba(168,95,95,.12);color:var(--mauve-light)}
+/* Details */
+.s-details{max-height:0;overflow:hidden;transition:max-height .52s var(--ease)}
+.s-card.open .s-details{max-height:280px}
+.s-details-inner{padding:0 1.8rem 1.8rem;position:relative;z-index:1}
+.s-sep{height:1px;background:rgba(255,255,255,.07);margin-bottom:1.1rem}
+.s-desc{font-size:.75rem;line-height:1.85;color:rgba(245,245,245,.52);font-weight:300;margin-bottom:1.2rem}
+.s-meta{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.s-dur{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,245,245,.28)}
+.s-cta-btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mauve-light);transition:color .2s,gap .2s;text-decoration:none}
+.s-cta-btn:hover{color:var(--off-white);gap:.65rem}
+/* Featured */
+.s-card--feat{background:linear-gradient(170deg,#1a0a0a,#0a0505)}
+/* Retoque */
+.s-card--ret{opacity:.8}
+.s-card--ret:hover,.s-card--ret.open{opacity:1}
+.s-ret-lbl{font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,245,245,.26);margin-bottom:.55rem}
+
+/* ——— FAQ ——— */
+#faq{background:var(--g01);padding:8rem 3.5rem}
+.faq-label{text-align:center;margin-bottom:5rem}
+.faq-label .eyebrow{margin-bottom:.9rem}
+.faq-label h2{font-family:var(--serif);font-size:clamp(2rem,3.2vw,2.8rem);font-weight:400;color:var(--off-white)}
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+.faq-q{width:100%;background:none;border:none;color:var(--off-white);padding:2rem 0;display:flex;align-items:center;justify-content:space-between;gap:2rem;cursor:pointer;text-align:left}
+.faq-num{font-family:var(--serif);font-size:.75rem;font-style:italic;color:var(--mauve);opacity:.55;flex-shrink:0;min-width:1.5rem;transition:opacity .2s}
+.faq-item.open .faq-num{opacity:1}
+.faq-qt{font-family:var(--serif);font-size:1.1rem;font-weight:400;line-height:1.35;flex:1}
+.faq-ico{flex-shrink:0;width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .45s var(--ease),background .3s}
+.faq-item.open .faq-ico{border-color:var(--mauve);background:rgba(168,95,95,.1);transform:rotate(45deg)}
+.faq-ico svg{width:10px;height:10px}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.faq-item.open .faq-a{max-height:240px}
+.faq-a p{font-size:.83rem;line-height:1.9;color:rgba(245,245,245,.5);font-weight:300;padding-bottom:2rem;padding-right:4rem;padding-left:2.5rem}
+
+/* ——— LOCALIZAÇÃO ——— */
+#localizacao{background:var(--g02);padding:8rem 3.5rem}
+.loc-wrap{max-width:1100px;margin:3.5rem auto 0;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.loc-map{aspect-ratio:4/3;background:var(--g03);overflow:hidden;position:relative}
+.loc-map iframe{width:100%;height:100%;border:none;filter:grayscale(100%) contrast(.85) brightness(.9);transition:filter .4s}
+.loc-map:hover iframe{filter:grayscale(60%) contrast(.9) brightness(1)}
+.loc-map-ov{position:absolute;inset:0;pointer-events:none;border:1px solid rgba(255,255,255,.05)}
+.loc-info .eyebrow{margin-bottom:1rem}
+.loc-info h2{font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.6rem);font-weight:400;color:var(--off-white);margin-bottom:.9rem}
+.loc-info>p{font-size:.8rem;color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:2rem}
+.loc-det{padding:1.4rem;border:1px solid rgba(255,255,255,.07);margin-bottom:2.2rem;display:flex;flex-direction:column;gap:.9rem}
+.loc-row{display:flex;flex-direction:column;gap:.15rem}
+.loc-row span{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.loc-row strong{font-size:.8rem;font-weight:400;color:var(--off-white)}
+/* Location title hierarchy */
+.loc-title{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);font-weight:400;color:var(--off-white);margin-bottom:.9rem;line-height:1}
+.loc-sub{display:block;font-size:.45em;letter-spacing:.12em;color:var(--text-muted);font-weight:300;margin-top:.4rem;font-family:var(--sans);text-transform:uppercase}
+
+/* CTA buttons — modern pill */
+.loc-ctas{display:flex;flex-direction:column;gap:.8rem}
+.cta-ig{
+    display:inline-flex;align-items:center;gap:.9rem;
+    padding:.95rem 1.8rem;
+    background:linear-gradient(135deg,var(--mauve) 0%,var(--mauve-light) 100%);
+    color:var(--off-white);border-radius:50px;
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    box-shadow:0 4px 22px rgba(168,95,95,.3),inset 0 1px 0 rgba(255,255,255,.15);
+    transition:transform .3s var(--ease),box-shadow .3s;
+    position:relative;overflow:hidden
+}
+.cta-ig::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent);border-radius:50px}
+.cta-ig:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(168,95,95,.42),inset 0 1px 0 rgba(255,255,255,.2)}
+.cta-ig svg{flex-shrink:0;position:relative;z-index:1}
+.cta-ig span{position:relative;z-index:1}
+
+.cta-wa{
+    display:inline-flex;align-items:center;gap:.9rem;
+    padding:.9rem 1.8rem;
+    background:transparent;
+    color:rgba(245,245,245,.75);
+    border-radius:50px;
+    border:1px solid rgba(168,95,95,.35);
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
+    transition:transform .3s var(--ease),border-color .3s,color .3s,box-shadow .3s;
+    position:relative;overflow:hidden
+}
+.cta-wa::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(168,95,95,.12),rgba(168,95,95,.04));opacity:0;transition:opacity .35s;border-radius:50px}
+.cta-wa:hover{border-color:var(--mauve-light);color:var(--off-white);transform:translateY(-2px);box-shadow:0 6px 22px rgba(168,95,95,.18)}
+.cta-wa:hover::before{opacity:1}
+.cta-ico{display:none}
+
+/* ——— FOOTER ——— */
+footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.f-logo{font-family:var(--serif);font-size:1.1rem;letter-spacing:.06em;line-height:1}
+.f-logo small{display:block;font-family:var(--sans);font-size:.48rem;letter-spacing:.3em;text-transform:uppercase;opacity:.3;margin-top:3px}
+.f-copy{font-size:.62rem;color:rgba(255,255,255,.18);letter-spacing:.04em}
+.f-ig{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);transition:color .2s}
+.f-ig:hover{color:var(--mauve-light)}
+
+/* ——— EXPAND MAP ——— */
+.exp-wrap{grid-column:span 2;perspective:1200px;cursor:pointer;overflow:visible;position:relative;padding:0;background:none;border:none}
+.exp-card{
+    position:relative;overflow:hidden;border-radius:16px;
+    background:var(--g01);border:1px solid rgba(255,255,255,.08);
+    height:200px;
+    transform-style:preserve-3d;
+    transition:height .65s var(--ease),box-shadow .35s;
+    will-change:transform
+}
+.exp-wrap.open .exp-card{height:390px}
+.exp-wrap:hover .exp-card{box-shadow:0 16px 48px rgba(0,0,0,.5)}
+
+/* Dot grid */
+.exp-dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);background-size:14px 14px;transition:opacity .4s}
+.exp-wrap.open .exp-dot-grid{opacity:0}
+
+/* Map visualization */
+.exp-vis{position:absolute;inset:0;background:#0d0a0a;opacity:0;pointer-events:none;transition:opacity .5s .1s}
+.exp-wrap.open .exp-vis{opacity:1}
+.exp-svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* Roads — draw-in animation via stroke-dashoffset */
+.er,.ev,.es{fill:none;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset .8s ease}
+.er{stroke:rgba(255,255,255,.2);stroke-width:3}
+.ev{stroke:rgba(255,255,255,.15);stroke-width:2.5}
+.es{stroke:rgba(255,255,255,.07);stroke-width:1.5}
+.exp-wrap.open .er1{stroke-dashoffset:0;transition-delay:.1s}
+.exp-wrap.open .er2{stroke-dashoffset:0;transition-delay:.2s}
+.exp-wrap.open .ev1{stroke-dashoffset:0;transition-delay:.28s}
+.exp-wrap.open .ev2{stroke-dashoffset:0;transition-delay:.36s}
+.exp-wrap.open .es1{stroke-dashoffset:0;transition-delay:.42s}
+.exp-wrap.open .es2{stroke-dashoffset:0;transition-delay:.48s}
+.exp-wrap.open .es3{stroke-dashoffset:0;transition-delay:.54s}
+.exp-wrap.open .es4{stroke-dashoffset:0;transition-delay:.6s}
+.exp-wrap.open .es5{stroke-dashoffset:0;transition-delay:.66s}
+
+/* Buildings */
+.exp-b{position:absolute;background:rgba(245,245,245,.1);border:1px solid rgba(245,245,245,.07);border-radius:2px;opacity:0;transform:scale(.8);transition:opacity .4s,transform .4s}
+.exp-wrap.open .exp-b{opacity:1;transform:scale(1)}
+.exp-wrap.open .exp-b:nth-child(2){transition-delay:.42s}
+.exp-wrap.open .exp-b:nth-child(3){transition-delay:.5s}
+.exp-wrap.open .exp-b:nth-child(4){transition-delay:.58s}
+.exp-wrap.open .exp-b:nth-child(5){transition-delay:.65s}
+.exp-wrap.open .exp-b:nth-child(6){transition-delay:.72s}
+
+/* Pin */
+.exp-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%) scale(0);transition:transform .5s var(--ease) .55s;filter:drop-shadow(0 0 10px rgba(168,95,95,.6))}
+.exp-wrap.open .exp-pin{transform:translate(-50%,-60%) scale(1)}
+
+/* Real maps iframe — fades in after SVG animation */
+.exp-iframe{position:absolute;inset:0;width:100%;height:100%;border:none;opacity:0;transition:opacity .6s ease 1s;filter:grayscale(20%) contrast(.9) brightness(.85);pointer-events:none}
+.exp-wrap.open .exp-iframe{opacity:1;pointer-events:all}
+.exp-wrap.open .exp-svg{opacity:.12;transition:opacity .5s .95s}
+
+/* Bottom gradient */
+.exp-fade{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,rgba(10,4,4,.92),transparent);pointer-events:none;z-index:1}
+
+/* Content */
+.exp-content{position:absolute;inset:0;z-index:2;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between}
+.exp-top{display:flex;align-items:flex-start;justify-content:space-between}
+.exp-ico{width:32px;height:32px;border-radius:9px;background:rgba(168,95,95,.1);border:1px solid rgba(168,95,95,.2);display:flex;align-items:center;justify-content:center;transition:opacity .3s}
+.exp-wrap.open .exp-ico{opacity:0}
+.exp-badge{display:flex;align-items:center;gap:6px;padding:.25rem .7rem;border-radius:50px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,245,245,.55)}
+.exp-dot{width:6px;height:6px;border-radius:50%;background:var(--mauve);display:inline-block;animation:livePulse 2s infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(168,95,95,.5)}70%{box-shadow:0 0 0 7px rgba(168,95,95,0)}100%{box-shadow:0 0 0 0 rgba(168,95,95,0)}}
+.exp-bottom{}
+.exp-loc{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--off-white);margin-bottom:.25rem;transition:transform .25s var(--ease)}
+.exp-wrap:hover .exp-loc{transform:translateX(4px)}
+.exp-coords{font-size:.6rem;font-family:monospace;color:var(--text-muted);margin-bottom:.55rem;opacity:0;max-height:0;overflow:hidden;transition:opacity .35s .2s,max-height .35s .2s}
+.exp-wrap.open .exp-coords{opacity:1;max-height:30px}
+.exp-line{height:1px;background:linear-gradient(to right,rgba(168,95,95,.55),rgba(168,95,95,.2),transparent);transform:scaleX(.3);transform-origin:left;transition:transform .45s ease}
+.exp-wrap:hover .exp-line,.exp-wrap.open .exp-line{transform:scaleX(1)}
+.exp-hint{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:.57rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;opacity:0;transition:opacity .25s}
+.exp-wrap:hover:not(.open) .exp-hint{opacity:1}
+
+/* ——— BENTO GRID — Localização ——— */
+.bento-grid{max-width:1100px;margin:3.5rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.bento-item{
+    position:relative;padding:1.6rem;border-radius:16px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.02);
+    transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;
+    will-change:transform
+}
+.bento-item:hover{transform:translateY(-4px);border-color:rgba(168,95,95,.2);box-shadow:0 12px 36px rgba(0,0,0,.35)}
+/* Dot pattern — revealed on hover */
+.bento-item::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:8px 8px;opacity:0;transition:opacity .35s;pointer-events:none}
+.bento-item:hover::before,.bento-item.bento-persist::before{opacity:1}
+/* Gradient border glow */
+.bento-item::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(168,95,95,.12),transparent 50%,rgba(168,95,95,.06));opacity:0;transition:opacity .35s;pointer-events:none}
+.bento-item:hover::after,.bento-item.bento-persist::after{opacity:1}
+/* Persistent hover state */
+.bento-persist{transform:translateY(-4px);border-color:rgba(168,95,95,.2);box-shadow:0 12px 36px rgba(0,0,0,.35)}
+.bento-col2{grid-column:span 2}
+/* Map item */
+.bento-map{padding:0;overflow:hidden}
+.bento-map iframe{width:100%;height:100%;border:none;filter:grayscale(100%) contrast(.85) brightness(.85);transition:filter .4s;display:block;min-height:240px}
+.bento-map:hover iframe{filter:grayscale(50%) contrast(.9) brightness(.95)}
+/* Bento icon badge */
+.bento-badge{width:34px;height:34px;border-radius:10px;background:rgba(168,95,95,.12);border:1px solid rgba(168,95,95,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+.bento-label{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mauve-light);margin-bottom:.4rem;display:block}
+.bento-title{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--off-white);margin-bottom:.4rem;line-height:1.25}
+.bento-text{font-size:.75rem;color:var(--text-muted);font-weight:300;line-height:1.7}
+.bento-status{display:inline-block;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .7rem;border-radius:50px;background:rgba(168,95,95,.1);border:1px solid rgba(168,95,95,.2);color:var(--mauve-light);margin-top:.9rem}
+.bento-cta{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--mauve-light);margin-top:1.1rem;transition:gap .2s,color .2s;text-decoration:none}
+.bento-cta:hover{gap:.75rem;color:var(--off-white)}
+.bento-cta-full{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding:.85rem 1.1rem;border-radius:50px;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;transition:transform .3s var(--ease),box-shadow .3s;text-decoration:none}
+.bento-cta-ig{background:linear-gradient(135deg,var(--mauve),var(--mauve-light));color:var(--off-white);box-shadow:0 4px 16px rgba(168,95,95,.28)}
+.bento-cta-ig:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,95,95,.4)}
+.bento-cta-wa{background:rgba(255,255,255,.05);color:rgba(245,245,245,.7);border:1px solid rgba(255,255,255,.1)}
+.bento-cta-wa:hover{background:rgba(255,255,255,.09);color:var(--off-white);transform:translateY(-2px)}
+
+/* ——— MOBILE MENU ——— */
+#mob-menu{
+    position:fixed;top:0;right:0;bottom:0;width:300px;z-index:500;
+    background:rgba(5,2,2,.88);
+    backdrop-filter:blur(28px) saturate(160%);
+    -webkit-backdrop-filter:blur(28px) saturate(160%);
+    border-left:1px solid rgba(255,255,255,.08);
+    box-shadow:-8px 0 40px rgba(0,0,0,.5);
+    padding:5.5rem 2.5rem 3rem;
+    display:flex;flex-direction:column;gap:0;
+    transform:translateX(100%);
+    transition:transform .48s var(--ease)
+}
+#mob-menu.open{transform:translateX(0)}
+#mob-overlay{position:fixed;inset:0;z-index:490;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .4s;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+#mob-overlay.open{opacity:1;pointer-events:all}
+.mob-links{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.07)}
+.mob-links li{border-bottom:1px solid rgba(255,255,255,.07)}
+.mob-links a{display:block;padding:1.2rem 0;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:rgba(245,245,245,.7);transition:color .2s,padding-left .2s}
+.mob-links a:hover{color:var(--off-white);padding-left:.5rem}
+.mob-cta{display:block;margin-top:2rem;padding:1rem 1.5rem;background:var(--mauve);color:var(--off-white);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;border-radius:50px;text-align:center;transition:background .25s}
+.mob-cta:hover{background:var(--mauve-dark)}
+.mob-close{position:absolute;top:1.6rem;right:1.8rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;padding:4px;transition:color .2s}
+.mob-close:hover{color:var(--off-white)}
+/* Hamburger → X animation */
+.nav-ham span{transition:transform .3s,opacity .3s}
+.nav-ham.active span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}
+.nav-ham.active span:nth-child(2){opacity:0}
+.nav-ham.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
+
+/* ——— SWIPE HINT ——— */
+.swipe-hint{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:.5rem;
+    padding:.8rem 0 0;
+    font-size:.58rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--text-muted)
+}
+.swipe-arrow{
+    display:flex;align-items:center;gap:3px;
+    animation:swipeSlide 1.6s ease infinite
+}
+.swipe-arrow span{
+    display:block;width:6px;height:6px;
+    border-right:1.5px solid var(--mauve-light);
+    border-top:1.5px solid var(--mauve-light);
+    transform:rotate(45deg);
+    opacity:0;
+    animation:swipeFade 1.6s ease infinite
+}
+.swipe-arrow span:nth-child(2){animation-delay:.2s}
+.swipe-arrow span:nth-child(3){animation-delay:.4s}
+@keyframes swipeFade{
+    0%,100%{opacity:0;transform:rotate(45deg) translate(-2px,-2px)}
+    50%{opacity:1;transform:rotate(45deg) translate(1px,1px)}
+}
+@media(max-width:860px){
+    .swipe-hint{display:flex}
+    /* Center resultados header on mobile */
+    #resultados .sec-head{align-items:center;text-align:center}
+    #resultados .sec-head>p{text-align:center}
+    /* Center dots */
+    .r-dots,.dep-dots{justify-content:center}
+}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+/* ——— KEYFRAMES ——— */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scrollLine{0%{transform-origin:top;transform:scaleY(0);opacity:0}30%{opacity:1}100%{transform-origin:top;transform:scaleY(1) translateY(120%);opacity:0}}
+
+/* ——— RESPONSIVE ——— */
+@media(max-width:1024px){
+    .serv-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+    #nav{top:.6rem;padding:0 .9rem;gap:.5rem}
+    #nav.scrolled{top:.4rem}
+    .nav-logo-img{height:36px;width:36px;border-radius:9px}
+    .nav-pill{padding:.6rem 1.1rem}
+    .nav-links{gap:.9rem}
+    .nav-links a{font-size:.52rem;letter-spacing:.04em}
+    .btn-long{display:none}
+    .btn-short{display:inline}
+    .nav-btn{font-size:.52rem;letter-spacing:.06em;padding:.62rem 1rem}
+    .nav-ham{display:none!important}
+    .sec-head{flex-direction:column;padding:0 1.5rem}.sec-head>p{text-align:left}
+    .r-track,.r-dots,.dep-track,.dep-dots{padding-left:1.5rem;padding-right:1.5rem}
+    #missao{padding:6rem 1.5rem}.missao-wrap{grid-template-columns:1fr;gap:3rem}.missao-photo{display:none}
+    .valores-list{grid-template-columns:1fr 1fr}
+    .v-item{padding-left:1.3rem!important;padding-right:1.3rem!important}
+    #depoimentos{padding:6rem 1.5rem}
+    #servicos{padding:5rem 1.5rem}
+    .serv-grid{grid-template-columns:1fr!important;max-width:100%}
+    .s-card{border-radius:10px}
+    #faq{padding:6rem 1.5rem}.faq-a p{padding-right:1rem;padding-left:2rem}
+    #localizacao{padding:6rem 1.5rem}
+    .bento-grid{grid-template-columns:1fr!important}
+    .bento-col2{grid-column:auto}
+    footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}
+}
+@media(max-width:430px){
+    #nav{padding:0 .6rem;gap:.35rem}
+    .nav-logo-img{height:28px;width:28px;border-radius:7px}
+    .nav-pill{padding:.55rem .9rem}
+    .nav-links{gap:.65rem}
+    .nav-links a{font-size:.46rem;letter-spacing:.02em}
+    .nav-btn{font-size:.46rem;letter-spacing:.04em;padding:.55rem .85rem}
+    .hero-h1{font-size:2.5rem}
+    .r-card{flex:0 0 260px}.r-card--ba{flex:0 0 320px}
+    .dep-card{flex:0 0 260px}
+    .valores-list{grid-template-columns:1fr}
+}
+@media(max-width:360px){
+    .nav-links a{font-size:.42rem;letter-spacing:0}
+    .nav-btn{font-size:.42rem;padding:.5rem .7rem}
+    .nav-links{gap:.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="nav">
+    <a href="#hero" class="nav-logo-wrap">
+        <img src="logo_hera.png" alt="Hera Beauty" class="nav-logo-img">
+    </a>
+    <div class="nav-pill">
+        <ul class="nav-links">
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+        </ul>
+    </div>
+    <a href="https://ig.me/m/herabeauty.pt" target="_blank" rel="noopener" class="nav-btn">
+        <span class="btn-long">Marcar Sessão</span>
+        <span class="btn-short">Marcar</span>
+    </a>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mob-overlay" onclick="toggleMenu()"></div>
+<div id="mob-menu">
+    <button class="mob-close" onclick="toggleMenu()">✕</button>
+    <ul class="mob-links">
+        <li><a href="#resultados" onclick="toggleMenu()">Resultados</a></li>
+        <li><a href="#servicos" onclick="toggleMenu()">Serviços</a></li>
+        <li><a href="#faq" onclick="toggleMenu()">FAQ</a></li>
+        <li><a href="#localizacao" onclick="toggleMenu()">Localização</a></li>
+    </ul>
+    <a href="https://ig.me/m/herabeauty.pt" target="_blank" rel="noopener" class="mob-cta">Marcar Sessão</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+        <h1 class="hero-h1">
+            <span class="tw-l0">Acorda com os</span>
+            <span class="tw-line">lábios <em id="tw-text"></em><em class="tw-dot">.</em><span class="tw-cursor">|</span></span>
+            <span class="tw-static">Todos os dias.</span>
+        </h1>
+        <p class="hero-sub">Lábios com cor e vida, naturais e completamente teus.</p>
+        <div class="hero-ctas">
+            <a href="https://ig.me/m/herabeauty.pt" target="_blank" rel="noopener" class="btn-main">
+                Marcar a minha sessão
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5l6 5.5-6 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener" class="hero-wa">ou fala connosco pelo <span>WhatsApp</span></a>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <span>Conheça o nosso trabalho</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- RESULTADOS -->
+<section id="resultados">
+    <div class="sec-head">
+        <div class="sec-head-l reveal"><span class="eyebrow">Resultados</span><h2>Antes &amp; Depois</h2></div>
+        <p class="reveal d1">Resultados reais, de clientes reais.<br>Naturalidade que fala por si.</p>
+    </div>
+    <div class="r-track" id="rTrack">
+        <!-- B&A 1 -->
+        <div class="r-card r-card--ba">
+            <div class="ba-slider" data-slider>
+                <div class="ba-img ba-before"></div>
+                <div class="ba-img ba-after"></div>
+                <div class="ba-handle"><div class="ba-knob"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M4 2L1 5l3 3M10 2l3 3-3 3" stroke="#888" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                <span class="ba-lbl ba-lbl-b">Antes</span><span class="ba-lbl ba-lbl-a">Depois</span>
+            </div>
+        </div>
+        <!-- Testemunho Sofia -->
+        <div class="r-card r-card--q" id="sofiaCard">
+            <div class="q-img" style="background-image:url('imagens/IMG_1539.jpg')"></div>
+            <div class="q-overlay"></div>
+            <!-- Hint sempre visível -->
+            <div class="q-hint">
+                <div class="q-hint-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <span class="q-hint-text">Ver depoimento</span>
+            </div>
+            <!-- Conteúdo revelado no hover -->
+            <div class="q-body">
+                <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <p class="q-text" style="font-size:.84rem">"Fiz nanolips e adorei o resultado!! Ficou incrível, a Bia é uma excelente profissional, teve todo o cuidado necessário. Não podia estar mais feliz!"</p>
+                <span class="q-name">Sofia M., Porto</span>
+            </div>
+        </div>
+        <!-- B&A 2 -->
+        <div class="r-card r-card--ba">
+            <div class="ba-slider" data-slider>
+                <div class="ba-img ba-before b2"></div>
+                <div class="ba-img ba-after a2"></div>
+                <div class="ba-handle"><div class="ba-knob"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M4 2L1 5l3 3M10 2l3 3-3 3" stroke="#888" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                <span class="ba-lbl ba-lbl-b">Antes</span><span class="ba-lbl ba-lbl-a">Depois</span>
+            </div>
+        </div>
+        <!-- B&A 3 -->
+        <div class="r-card r-card--ba">
+            <div class="ba-slider" data-slider>
+                <div class="ba-img ba-before b3"></div>
+                <div class="ba-img ba-after a3"></div>
+                <div class="ba-handle"><div class="ba-knob"><svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5h12M4 2L1 5l3 3M10 2l3 3-3 3" stroke="#888" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+                <span class="ba-lbl ba-lbl-b">Antes</span><span class="ba-lbl ba-lbl-a">Depois</span>
+            </div>
+        </div>
+        <!-- Video -->
+        <div class="r-card r-card--vid">
+            <div class="vid-thumb" style="position:relative;overflow:hidden">
+                <iframe
+                    src="https://drive.google.com/file/d/19KmwdjTmkBsAD8lw7vgkFHFh-rZ9yPMY/preview"
+                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
+                    allow="autoplay" allowfullscreen loading="lazy">
+                </iframe>
+                <div class="vid-cap"><span>Depoimento Real · Inês</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="r-dots">
+        <div class="r-dot active" data-i="0"></div><div class="r-dot" data-i="1"></div>
+        <div class="r-dot" data-i="2"></div><div class="r-dot" data-i="3"></div><div class="r-dot" data-i="4"></div>
+    </div>
+    <div class="swipe-hint">
+        <span>Desliza para ver mais</span>
+        <div class="swipe-arrow"><span></span><span></span><span></span></div>
+    </div>
+</section>
+
+<!-- MISSÃO -->
+<section id="missao">
+    <div class="missao-wrap">
+        <div class="missao-photo reveal">
+            <div class="missao-photo-inner"></div>
+            <div class="missao-badge">Bia<br>Fundadora<br>Hera Beauty</div>
+        </div>
+        <div class="missao-text">
+            <span class="eyebrow reveal">A Nossa Essência</span>
+            <h2 class="reveal d1">Beleza que parece<br>sempre ter sido tua</h2>
+            <blockquote class="missao-quote reveal d1">"Decidi apostar naquilo que me apaixonava: ajudar cada cliente a sentir-se bonita de manhã, sem esforço, sem artificialidade."</blockquote>
+            <p class="reveal d2">A Hera Beauty nasceu de uma vontade genuína de devolver autoestima de forma natural. Num mundo cheio de exageros, acredito que a beleza mais bonita é aquela que parece sempre ter sido tua.</p>
+            <p class="reveal d2">Cada sessão é um momento de cuidado e atenção total. Não és só mais uma cliente, és a razão pela qual faço o meu melhor todos os dias.</p>
+            <div class="valores-list">
+                <div class="v-item reveal d1">
+                    <span class="v-num">01</span>
+                    <h4>Resultado Natural</h4>
+                    <p>Realço a tua cor. Nunca a substituo por algo que não és.</p>
+                </div>
+                <div class="v-item reveal d2">
+                    <span class="v-num">02</span>
+                    <h4>Especialização Real</h4>
+                    <p>Estou sempre a aprender e a especializar-me para te entregar o melhor resultado possível.</p>
+                </div>
+                <div class="v-item reveal d2">
+                    <span class="v-num">03</span>
+                    <h4>Atendimento Humano</h4>
+                    <p>Cada cliente é única e merece atenção total, do início ao fim da sessão.</p>
+                </div>
+                <div class="v-item reveal d3">
+                    <span class="v-num">04</span>
+                    <h4>Posicionamento Premium</h4>
+                    <p>Qualidade não se negoceia. É o que me move em cada detalhe do meu trabalho.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+    <div class="sec-title reveal">
+        <span class="eyebrow">Experiências Reais</span>
+        <h2>O que dizem as nossas clientes</h2>
+    </div>
+    <div class="dep-track" id="depTrack">
+        <!-- Vídeo 1 — Inês -->
+        <div class="dep-card dep-card--video">
+            <div class="dep-media" style="position:relative">
+                <iframe
+                    src="https://drive.google.com/file/d/1oZjdQTP-wiTIik2CM6md9Qlkw7L6DCXo/preview"
+                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
+                    allow="autoplay" allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+            <div class="dep-body">
+                <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <p class="q-text">"Já estava com as expectativas lá em cima e tá ainda melhor..."</p>
+                <span class="q-name">Inês, Porto</span>
+            </div>
+        </div>
+        <!-- Print 1 -->
+        <!-- Print 1 — Bianca -->
+        <div class="dep-card dep-card--print">
+            <div class="dep-media" style="background-image:url('imagens/Depoimento_bianca.jpg');background-size:cover;background-position:top center"></div>
+            <div class="dep-body">
+                <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <p class="q-text">"Ter os lábios sem cor realmente era algo que me incomodava imenso."</p>
+                <span class="q-name">Bianca, Porto</span>
+            </div>
+        </div>
+        <!-- Print 2 — Carina -->
+        <div class="dep-card dep-card--print">
+            <div class="dep-media" style="background-image:url('imagens/Depoimento_carina.jpg');background-size:cover;background-position:top center"></div>
+            <div class="dep-body">
+                <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <p class="q-text">"Ganhou uma cliente, vou querer fazer sempre agora 🩷"</p>
+                <span class="q-name">Carina, Matosinhos</span>
+            </div>
+        </div>
+        <!-- Vídeo 2 — Sasha -->
+        <div class="dep-card dep-card--video">
+            <div class="dep-media" style="position:relative">
+                <iframe
+                    src="https://drive.google.com/file/d/1hrLKUmHcjRzjugj9zjn54i48bzzUIb7f/preview"
+                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
+                    allow="autoplay" allowfullscreen loading="lazy">
+                </iframe>
+            </div>
+            <div class="dep-body">
+                <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+                <p class="q-text">"Eu sentia que usavam muita maquiagem até mesmo quando não precisava..."</p>
+                <span class="q-name">Sasha, Porto</span>
+            </div>
+        </div>
+    </div>
+    <div class="dep-dots">
+        <div class="dep-dot active" data-i="0"></div><div class="dep-dot" data-i="1"></div>
+        <div class="dep-dot" data-i="2"></div><div class="dep-dot" data-i="3"></div>
+    </div>
+    <div class="swipe-hint">
+        <span>Desliza para ver mais</span>
+        <div class="swipe-arrow"><span></span><span></span><span></span></div>
+    </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+    <div class="serv-label reveal">
+        <span class="eyebrow">O Nosso Trabalho</span>
+        <h2>Serviços &amp; Preços</h2>
+    </div>
+    <div class="serv-grid">
+
+        <!-- Premium -->
+        <div class="s-card s-card--feat reveal" onclick="toggleServ(this)">
+            <div class="s-glow"></div>
+            <div class="s-front">
+                <div class="s-front-top">
+                    <span class="s-tag-sm">Mais popular</span>
+                    <div class="s-name">Nanopigmentação<br>Labial Premium</div>
+                </div>
+                <div class="s-front-bot">
+                    <span class="s-price">105€</span>
+                    <div class="s-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                </div>
+            </div>
+            <div class="s-details">
+                <div class="s-details-inner">
+                    <div class="s-sep"></div>
+                    <p class="s-desc">Devolve cor natural e saudável com resultado duradouro. Acordas com os lábios com cor: sem batom, sem esforço, sem abrir mão de nada.</p>
+                    <div class="s-meta">
+                        <span class="s-dur">Duração até 1 ano</span>
+                        <a href="https://ig.me/m/herabeauty.pt" class="s-cta-btn" target="_blank" onclick="event.stopPropagation()">Marcar sessão <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6.5 1.5l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Essencial -->
+        <div class="s-card reveal d1" onclick="toggleServ(this)">
+            <div class="s-glow"></div>
+            <div class="s-front">
+                <div class="s-front-top">
+                    <div class="s-name">Nanopigmentação<br>Labial Essencial</div>
+                </div>
+                <div class="s-front-bot">
+                    <span class="s-price">75€</span>
+                    <div class="s-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                </div>
+            </div>
+            <div class="s-details">
+                <div class="s-details-inner">
+                    <div class="s-sep"></div>
+                    <p class="s-desc">A mesma técnica, com duração mais curta. Ideal para quem quer experimentar antes de investir na versão anual.</p>
+                    <div class="s-meta">
+                        <span class="s-dur">Duração até 6 meses</span>
+                        <a href="https://ig.me/m/herabeauty.pt" class="s-cta-btn" target="_blank" onclick="event.stopPropagation()">Marcar sessão <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6.5 1.5l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Retoque -->
+        <div class="s-card s-card--ret reveal d2" onclick="toggleServ(this)">
+            <div class="s-glow"></div>
+            <div class="s-front">
+                <div class="s-front-top">
+                    <div class="s-ret-lbl">Complemento ao procedimento</div>
+                    <div class="s-name" style="font-size:1.05rem">Retoque de<br>Nanopigmentação</div>
+                </div>
+                <div class="s-front-bot">
+                    <span class="s-price" style="font-size:1.5rem">40€</span>
+                    <div class="s-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                </div>
+            </div>
+            <div class="s-details">
+                <div class="s-details-inner">
+                    <div class="s-sep"></div>
+                    <p class="s-desc">Disponível após 1 mês: ajusta a intensidade, uniformiza e garante o melhor resultado do procedimento inicial.</p>
+                    <div class="s-meta">
+                        <span class="s-dur">Após 1 mês</span>
+                        <a href="https://ig.me/m/herabeauty.pt" class="s-cta-btn" target="_blank" onclick="event.stopPropagation()">Marcar sessão <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6.5 1.5l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidragloss -->
+        <div class="s-card reveal d1" onclick="toggleServ(this)">
+            <div class="s-glow"></div>
+            <div class="s-front">
+                <div class="s-front-top">
+                    <div class="s-name">Hidragloss</div>
+                </div>
+                <div class="s-front-bot">
+                    <span class="s-price">30€</span>
+                    <div class="s-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                </div>
+            </div>
+            <div class="s-details">
+                <div class="s-details-inner">
+                    <div class="s-sep"></div>
+                    <p class="s-desc">Tratamento de hidratação e brilho labial. O complemento perfeito para manter os lábios saudáveis entre sessões.</p>
+                    <div class="s-meta">
+                        <span class="s-dur"></span>
+                        <a href="https://ig.me/m/herabeauty.pt" class="s-cta-btn" target="_blank" onclick="event.stopPropagation()">Marcar sessão <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6.5 1.5l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Limpeza de Pele -->
+        <div class="s-card reveal d2" onclick="toggleServ(this)">
+            <div class="s-glow"></div>
+            <div class="s-front">
+                <div class="s-front-top">
+                    <div class="s-name">Limpeza de Pele</div>
+                </div>
+                <div class="s-front-bot">
+                    <span class="s-price">60€</span>
+                    <div class="s-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                </div>
+            </div>
+            <div class="s-details">
+                <div class="s-details-inner">
+                    <div class="s-sep"></div>
+                    <p class="s-desc">Tratamento de limpeza facial profissional num ambiente cuidado, acolhedor e pensado ao detalhe.</p>
+                    <div class="s-meta">
+                        <span class="s-dur"></span>
+                        <a href="https://ig.me/m/herabeauty.pt" class="s-cta-btn" target="_blank" onclick="event.stopPropagation()">Marcar sessão <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M6.5 1.5l5 4.5-5 4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="faq-label reveal">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>Perguntas Frequentes</h2>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item reveal">
+            <button class="faq-q" onclick="faq(this)">
+                <span class="faq-num">01</span>
+                <span class="faq-qt">O procedimento dói?</span>
+                <div class="faq-ico"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="1.5"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
+            </button>
+            <div class="faq-a"><p>O processo é muito confortável: aplicamos creme anestésico antes para garantir uma experiência tranquila. A maioria das clientes fica surpreendida com o quão suave é.</p></div>
+        </div>
+        <div class="faq-item reveal d1">
+            <button class="faq-q" onclick="faq(this)">
+                <span class="faq-num">02</span>
+                <span class="faq-qt">O resultado fica artificial?</span>
+                <div class="faq-ico"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="1.5"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
+            </button>
+            <div class="faq-a"><p>O objetivo é exatamente o oposto: realçar a cor natural dos teus lábios, não criar um efeito de batom permanente. Os resultados são subtis, elegantes e muito naturais.</p></div>
+        </div>
+        <div class="faq-item reveal d1">
+            <button class="faq-q" onclick="faq(this)">
+                <span class="faq-num">03</span>
+                <span class="faq-qt">É um procedimento permanente?</span>
+                <div class="faq-ico"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="1.5"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
+            </button>
+            <div class="faq-a"><p>Não, é temporário. A versão Premium dura até 1 ano e a Essencial até 6 meses e vai desvanecendo gradualmente de forma natural, sem linhas bruscas.</p></div>
+        </div>
+        <div class="faq-item reveal d2">
+            <button class="faq-q" onclick="faq(this)">
+                <span class="faq-num">04</span>
+                <span class="faq-qt">Tenho medo de não gostar do resultado.</span>
+                <div class="faq-ico"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="1.5"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
+            </button>
+            <div class="faq-a"><p>Entendemos perfeitamente. É por isso que adoramos mostrar os antes/depois das nossas clientes. Nada melhor do que ver resultados reais. Fala connosco pelo Instagram e enviamos exemplos com gosto.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- LOCALIZAÇÃO -->
+<section id="localizacao">
+    <div class="sec-head" style="max-width:1100px;margin:0 auto">
+        <div class="sec-head-l reveal"><span class="eyebrow">Onde Estamos</span><h2>Vem conhecer-nos</h2></div>
+    </div>
+
+    <div class="bento-grid">
+
+        <!-- Expand Map — col-span 2 -->
+        <div class="bento-col2 exp-wrap reveal" id="expMap">
+            <div class="exp-card">
+                <!-- Dot grid (collapsed) -->
+                <div class="exp-dot-grid"></div>
+                <!-- Map visualization (expanded) -->
+                <div class="exp-vis">
+                    <svg class="exp-svg" viewBox="0 0 100 60" preserveAspectRatio="none">
+                        <line class="er er1" x1="0" y1="22" x2="100" y2="22"/>
+                        <line class="er er2" x1="0" y1="42" x2="100" y2="42"/>
+                        <line class="ev ev1" x1="28" y1="0" x2="28" y2="60"/>
+                        <line class="ev ev2" x1="68" y1="0" x2="68" y2="60"/>
+                        <line class="es es1" x1="0" y1="12" x2="100" y2="12"/>
+                        <line class="es es2" x1="0" y1="52" x2="100" y2="52"/>
+                        <line class="es es3" x1="12" y1="0" x2="12" y2="60"/>
+                        <line class="es es4" x1="48" y1="0" x2="48" y2="60"/>
+                        <line class="es es5" x1="85" y1="0" x2="85" y2="60"/>
+                    </svg>
+                    <div class="exp-b" style="top:25%;left:6%;width:18%;height:28%"></div>
+                    <div class="exp-b" style="top:8%;left:32%;width:12%;height:16%"></div>
+                    <div class="exp-b" style="top:46%;left:70%;width:22%;height:26%"></div>
+                    <div class="exp-b" style="top:10%;right:6%;width:14%;height:30%"></div>
+                    <div class="exp-b" style="top:50%;left:3%;width:8%;height:14%"></div>
+                    <div class="exp-pin">
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="var(--mauve)"/>
+                            <circle cx="12" cy="9" r="2.5" fill="var(--off-white)"/>
+                        </svg>
+                    </div>
+                    <!-- Real Google Maps — fades in after SVG animation -->
+                    <iframe
+                        class="exp-iframe"
+                        src="https://maps.google.com/maps?q=R.+1%C2%BA+de+Dezembro+239%2C+4450-227+Matosinhos%2C+Portugal&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <!-- Gradient bottom fade -->
+                <div class="exp-fade"></div>
+                <!-- Content -->
+                <div class="exp-content">
+                    <div class="exp-top">
+                        <div class="exp-ico">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mauve-light)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+                            </svg>
+                        </div>
+                        <div class="exp-badge"><span class="exp-dot"></span><span>Matosinhos · Porto</span></div>
+                    </div>
+                    <div class="exp-bottom">
+                        <h3 class="exp-loc">Hera Beauty Studio</h3>
+                        <p class="exp-coords">41.1850° N · 8.6970° W</p>
+                        <div class="exp-line"></div>
+                    </div>
+                </div>
+                <p class="exp-hint">Clica para expandir</p>
+            </div>
+        </div>
+
+        <!-- Localização -->
+        <div class="bento-item reveal d1">
+            <div class="bento-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mauve-light)" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <span class="bento-label">Localização</span>
+            <div class="bento-title">R. 1º de Dezembro 239<br>4450-227 Matosinhos</div>
+            <p class="bento-text">Espaço cuidado, acolhedor e pensado ao detalhe para que a tua experiência seja memorável.</p>
+            <span class="bento-status">Porto · Portugal</span>
+        </div>
+
+        <!-- Horário -->
+        <div class="bento-item reveal d1">
+            <div class="bento-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mauve-light)" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg></div>
+            <span class="bento-label">Horário</span>
+            <div class="bento-title">Seg – Sáb</div>
+            <p class="bento-text">Mediante marcação prévia. Agenda a tua sessão pelo Instagram ou WhatsApp.</p>
+            <span class="bento-status">Disponível agora</span>
+        </div>
+
+        <!-- Instagram — persistent hover -->
+        <div class="bento-item bento-persist reveal d2">
+            <div class="bento-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mauve-light)" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="var(--mauve-light)" stroke="none"/></svg></div>
+            <span class="bento-label">Instagram</span>
+            <div class="bento-title">@herabeauty.pt</div>
+            <p class="bento-text">Segue o nosso trabalho, vê resultados reais e marca a tua sessão pelo DM.</p>
+            <a href="https://ig.me/m/herabeauty.pt" target="_blank" rel="noopener" class="bento-cta-full bento-cta-ig">
+                <span>Marcar sessão</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5l6 5.5-6 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="bento-item reveal d2">
+            <div class="bento-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mauve-light)" stroke-width="1.5" stroke-linecap="round"><path d="M3 21l1.65-3.8a9 9 0 113.4 2.9L3 21"/></svg></div>
+            <span class="bento-label">WhatsApp</span>
+            <div class="bento-title">Fala connosco</div>
+            <p class="bento-text">Preferes o WhatsApp? Envia uma mensagem e respondemos rapidamente.</p>
+            <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener" class="bento-cta-full bento-cta-wa" style="margin-top:1.1rem">
+                <span>Abrir WhatsApp</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7.5 1.5l6 5.5-6 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="f-logo">HERA<small>Beauty · Matosinhos, Porto</small></div>
+    <span class="f-copy">© 2025 Hera Beauty. Todos os direitos reservados.</span>
+    <a href="https://instagram.com/herabeauty.pt" target="_blank" rel="noopener" class="f-ig">@herabeauty.pt</a>
+</footer>
+
+<script>
+/* Mobile menu */
+function toggleMenu(){
+    const menu=document.getElementById('mob-menu');
+    const overlay=document.getElementById('mob-overlay');
+    const ham=document.querySelector('.nav-ham');
+    const isOpen=menu.classList.contains('open');
+    menu.classList.toggle('open',!isOpen);
+    overlay.classList.toggle('open',!isOpen);
+    ham.classList.toggle('active',!isOpen);
+    document.body.style.overflow=isOpen?'':'hidden';
+}
+
+/* Service cards toggle */
+function toggleServ(card){
+    const isOpen=card.classList.contains('open');
+    document.querySelectorAll('.s-card.open').forEach(c=>c.classList.remove('open'));
+    if(!isOpen)card.classList.add('open');
+}
+
+/* Touch support for Sofia card */
+const sofia=document.getElementById('sofiaCard');
+if(sofia){
+    sofia.addEventListener('touchstart',()=>sofia.classList.toggle('touched'),{passive:true});
+    document.addEventListener('touchstart',e=>{if(!sofia.contains(e.target))sofia.classList.remove('touched')},{passive:true});
+}
+
+/* Expand Map — 3D tilt + click expand */
+const expMap=document.getElementById('expMap');
+if(expMap){
+    const card=expMap.querySelector('.exp-card');
+    let tiltActive=false;
+    expMap.addEventListener('mousemove',e=>{
+        const r=expMap.getBoundingClientRect();
+        const dx=(e.clientX-(r.left+r.width/2))/(r.width/2);
+        const dy=(e.clientY-(r.top+r.height/2))/(r.height/2);
+        card.style.transform=`rotateY(${dx*7}deg) rotateX(${-dy*7}deg)`;
+        tiltActive=true;
+    });
+    expMap.addEventListener('mouseleave',()=>{
+        card.style.transform='rotateY(0) rotateX(0)';
+        tiltActive=false;
+    });
+    expMap.addEventListener('click',()=>{
+        expMap.classList.toggle('open');
+        // reset tilt on open
+        card.style.transform='rotateY(0) rotateX(0)';
+    });
+}
+
+/* Navbar */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60),{passive:true});
+
+/* Reveal */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* FAQ */
+function faq(btn){
+    const it=btn.closest('.faq-item'),op=it.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!op)it.classList.add('open');
+}
+
+/* Drag scroll */
+function dragScroll(el){
+    let down=false,sx=0,sl=0;
+    el.addEventListener('mousedown',e=>{down=true;el.classList.add('grabbing');sx=e.pageX-el.offsetLeft;sl=el.scrollLeft;e.preventDefault()});
+    ['mouseup','mouseleave'].forEach(ev=>el.addEventListener(ev,()=>{down=false;el.classList.remove('grabbing')}));
+    el.addEventListener('mousemove',e=>{if(!down)return;el.scrollLeft=sl-(e.pageX-el.offsetLeft-sx)*1.4});
+}
+
+/* Results dots */
+const rT=document.getElementById('rTrack');
+dragScroll(rT);
+const rC=rT.querySelectorAll('.r-card'),rD=document.querySelectorAll('.r-dot');
+rT.addEventListener('scroll',()=>{
+    const cw=rC[0].offsetWidth+16,idx=Math.min(Math.round(rT.scrollLeft/cw),rD.length-1);
+    rD.forEach((d,i)=>d.classList.toggle('active',i===idx));
+},{passive:true});
+rD.forEach(d=>d.addEventListener('click',()=>{
+    rT.scrollTo({left:parseInt(d.dataset.i)*(rC[0].offsetWidth+16),behavior:'smooth'});
+}));
+
+/* Dep dots */
+const dT=document.getElementById('depTrack');
+dragScroll(dT);
+const dC=dT.querySelectorAll('.dep-card'),dD=document.querySelectorAll('.dep-dot');
+dT.addEventListener('scroll',()=>{
+    const cw=dC[0].offsetWidth+16,idx=Math.min(Math.round(dT.scrollLeft/cw),dD.length-1);
+    dD.forEach((d,i)=>d.classList.toggle('active',i===idx));
+},{passive:true});
+dD.forEach(d=>d.addEventListener('click',()=>{
+    dT.scrollTo({left:parseInt(d.dataset.i)*(dC[0].offsetWidth+16),behavior:'smooth'});
+}));
+
+/* B&A drag slider */
+document.querySelectorAll('[data-slider]').forEach(sl=>{
+    const after=sl.querySelector('.ba-after'),handle=sl.querySelector('.ba-handle');
+    let drag=false;
+    function set(pct){
+        pct=Math.max(5,Math.min(95,pct));
+        after.style.clipPath=`inset(0 ${100-pct}% 0 0)`;
+        handle.style.left=pct+'%';
+    }
+    set(50);
+    const pct=x=>((x-sl.getBoundingClientRect().left)/sl.offsetWidth)*100;
+    handle.addEventListener('mousedown',e=>{drag=true;e.stopPropagation();e.preventDefault()});
+    window.addEventListener('mouseup',()=>drag=false);
+    window.addEventListener('mousemove',e=>{if(drag)set(pct(e.clientX))});
+    handle.addEventListener('touchstart',e=>{drag=true;e.stopPropagation()},{passive:true});
+    window.addEventListener('touchend',()=>drag=false);
+    window.addEventListener('touchmove',e=>{if(drag)set(pct(e.touches[0].clientX))},{passive:true});
+    /* Hint animation */
+    setTimeout(()=>{
+        let p=50,dir=-1,steps=0;
+        const h=setInterval(()=>{p+=dir*1.8;set(p);if(p<30&&dir<0)dir=1;if(p>50&&dir>0){clearInterval(h);set(50)}},16);
+    },1400);
+});
+/* Typewriter hero */
+(function(){
+    const words=['perfeitos','pigmentados','prontos','lindos'];
+    const el=document.getElementById('tw-text');
+    let wi=0,ci=0,del=false;
+    function tick(){
+        const w=words[wi];
+        if(!del){
+            el.textContent=w.substring(0,ci+1);
+            ci++;
+            if(ci===w.length){del=true;setTimeout(tick,2200);return;}
+            setTimeout(tick,105);
+        }else{
+            el.textContent=w.substring(0,ci-1);
+            ci--;
+            if(ci===0){del=false;wi=(wi+1)%words.length;setTimeout(tick,180);return;}
+            setTimeout(tick,52);
+        }
+    }
+    setTimeout(tick,1300);
+})();
+</script>
+</body>
+</html>
