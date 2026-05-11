@@ -578,6 +578,14 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     .nav-btn{font-size:.42rem;padding:.5rem .7rem}
     .nav-links{gap:.5rem}
 }
+/* ——— CAROUSEL ARROWS ——— */
+.car-wrap{position:relative}
+.car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(10,5,5,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--off-white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.car-arrow:hover{background:var(--mauve);border-color:var(--mauve);transform:translateY(-50%) scale(1.08)}
+.car-arrow svg{width:14px;height:14px;pointer-events:none}
+.car-prev{left:.8rem}
+.car-next{right:.8rem}
+@media(max-width:860px){.car-arrow{width:34px;height:34px}.car-prev{left:.3rem}.car-next{right:.3rem}}
 </style>
 </head>
 <body>
@@ -645,6 +653,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <div class="sec-head-l reveal"><span class="eyebrow">Resultados</span><h2>Antes &amp; Depois</h2></div>
         <p class="reveal d1">Resultados reais, de clientes reais.<br>Naturalidade que fala por si.</p>
     </div>
+    <div class="car-wrap">
+    <button class="car-arrow car-prev" id="rPrev" aria-label="Anterior">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M9 1L3 7l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
     <div class="r-track" id="rTrack">
         <!-- B&A 1 -->
         <div class="r-card r-card--ba">
@@ -701,6 +713,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
             </div>
         </div>
     </div>
+    <button class="car-arrow car-next" id="rNext" aria-label="Próximo">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M5 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
+    </div>
     <div class="r-dots">
         <div class="r-dot active" data-i="0"></div><div class="r-dot" data-i="1"></div>
         <div class="r-dot" data-i="2"></div><div class="r-dot" data-i="3"></div><div class="r-dot" data-i="4"></div>
@@ -756,6 +772,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <span class="eyebrow">Experiências Reais</span>
         <h2>O que dizem as nossas clientes</h2>
     </div>
+    <div class="car-wrap">
+    <button class="car-arrow car-prev" id="dPrev" aria-label="Anterior">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M9 1L3 7l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
     <div class="dep-track" id="depTrack">
         <!-- Vídeo 1 — Inês -->
         <div class="dep-card dep-card--video">
@@ -806,6 +826,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
                 <span class="q-name">Sasha, Porto</span>
             </div>
         </div>
+    </div>
+    <button class="car-arrow car-next" id="dNext" aria-label="Próximo">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M5 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </button>
     </div>
     <div class="dep-dots">
         <div class="dep-dot active" data-i="0"></div><div class="dep-dot" data-i="1"></div>
@@ -1206,6 +1230,12 @@ dT.addEventListener('scroll',()=>{
 dD.forEach(d=>d.addEventListener('click',()=>{
     dT.scrollTo({left:parseInt(d.dataset.i)*(dC[0].offsetWidth+16),behavior:'smooth'});
 }));
+
+/* Carousel arrows */
+document.getElementById('rPrev').addEventListener('click',()=>rT.scrollBy({left:-(rC[0].offsetWidth+16),behavior:'smooth'}));
+document.getElementById('rNext').addEventListener('click',()=>rT.scrollBy({left:rC[0].offsetWidth+16,behavior:'smooth'}));
+document.getElementById('dPrev').addEventListener('click',()=>dT.scrollBy({left:-(dC[0].offsetWidth+16),behavior:'smooth'}));
+document.getElementById('dNext').addEventListener('click',()=>dT.scrollBy({left:dC[0].offsetWidth+16,behavior:'smooth'}));
 
 /* B&A drag slider */
 document.querySelectorAll('[data-slider]').forEach(sl=>{
