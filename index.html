@@ -41,7 +41,7 @@ img{display:block;max-width:100%}
 
 /* Pill — sits in auto middle column = always page-centered */
 .nav-pill{
-    display:inline-flex;align-items:center;
+    display:inline-flex;align-items:center;justify-content:center;
     padding:.78rem 1.8rem;
     border-radius:50px;
     background:rgba(10,4,4,.42);
@@ -54,7 +54,7 @@ img{display:block;max-width:100%}
 }
 #nav.scrolled .nav-pill{background:rgba(8,3,3,.65);box-shadow:0 8px 36px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06)}
 
-.nav-links{display:flex;list-style:none;gap:2.2rem}
+.nav-links{display:flex;list-style:none;gap:2.2rem;align-items:center;justify-content:center}
 .nav-links a{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--dim);transition:color .2s}
 .nav-links a:hover{color:var(--off-white)}
 .btn-short{display:none}
@@ -112,7 +112,7 @@ img{display:block;max-width:100%}
 .r-track{display:flex;gap:1.2rem;padding:.5rem 3.5rem 2.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none}
 .r-track::-webkit-scrollbar{display:none}
 .r-track.grabbing{cursor:grabbing}
-.r-card{flex:0 0 300px;scroll-snap-align:start;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--g02);transition:transform .4s var(--ease)}
+.r-card{flex:0 0 300px;scroll-snap-align:center;border-radius:2px;overflow:hidden;position:relative;aspect-ratio:3/4;background:var(--g02);transition:transform .4s var(--ease)}
 .r-card:hover{transform:translateY(-4px)}
 .r-card--ba{flex:0 0 420px}
 
@@ -168,8 +168,8 @@ img{display:block;max-width:100%}
 #missao{background:var(--off-white);padding:9rem 3.5rem;color:#111;position:relative}
 #missao::before{content:'';position:absolute;top:0;left:3.5rem;right:3.5rem;height:1px;background:linear-gradient(to right,transparent,rgba(168,95,95,.25),transparent)}
 .missao-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:7rem;align-items:center}
-.missao-photo{position:relative}
-.missao-photo-inner{aspect-ratio:3/4;overflow:hidden;background:linear-gradient(170deg,#c4a0a0,#7a4a4a);background-image:url('imagens/Bia_hera.jpg');background-size:cover;background-position:center top}
+.missao-photo{position:relative}.missao-photo--inline{display:none}
+.missao-photo-inner{aspect-ratio:3/4;overflow:hidden;background:linear-gradient(170deg,#c4a0a0,#7a4a4a);background-image:url('imagens/Bia_hera.JPG');background-size:cover;background-position:center top}
 /* SUBSTITUIR: background-image:url('bia-studio.jpg');background-size:cover;background-position:center top */
 .missao-badge{position:absolute;bottom:-1.2rem;right:-1.5rem;background:var(--black);color:var(--off-white);padding:1.1rem 1.4rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;line-height:1.7}
 .missao-text .eyebrow{color:var(--mauve);margin-bottom:1.1rem}
@@ -212,7 +212,7 @@ img{display:block;max-width:100%}
 .dep-track{display:flex;gap:1.2rem;padding:.5rem 3.5rem 1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab}
 .dep-track::-webkit-scrollbar{display:none}
 .dep-track.grabbing{cursor:grabbing}
-.dep-card{flex:0 0 300px;scroll-snap-align:start;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015);overflow:hidden;transition:border-color .35s,transform .35s var(--ease)}
+.dep-card{flex:0 0 300px;scroll-snap-align:center;border:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015);overflow:hidden;transition:border-color .35s,transform .35s var(--ease)}
 .dep-card:hover{border-color:rgba(168,95,95,.2);transform:translateY(-4px)}
 .dep-media{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .dep-card--video .dep-media{background:linear-gradient(160deg,#2a1212,#0e0606)}
@@ -472,8 +472,8 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
 #mob-overlay.open{opacity:1;pointer-events:all}
 .mob-links{list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.07)}
 .mob-links li{border-bottom:1px solid rgba(255,255,255,.07)}
-.mob-links a{display:block;padding:1.2rem 0;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:rgba(245,245,245,.7);transition:color .2s,padding-left .2s}
-.mob-links a:hover{color:var(--off-white);padding-left:.5rem}
+.mob-links a{display:block;padding:1.2rem 0;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;color:rgba(245,245,245,.7);transition:color .2s;text-align:center}
+.mob-links a:hover{color:var(--off-white)}
 .mob-cta{display:block;margin-top:2rem;padding:1rem 1.5rem;background:var(--mauve);color:var(--off-white);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;border-radius:50px;text-align:center;transition:background .25s}
 .mob-cta:hover{background:var(--mauve-dark)}
 .mob-close{position:absolute;top:1.6rem;right:1.8rem;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;padding:4px;transition:color .2s}
@@ -536,19 +536,20 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     .serv-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:860px){
-    #nav{top:.6rem;padding:0 .9rem;gap:.5rem}
+    #nav{top:.6rem;padding:0 .9rem;gap:.5rem;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
     #nav.scrolled{top:.4rem}
-    .nav-logo-img{height:36px;width:36px;border-radius:9px}
+    .nav-logo-img{height:44px;width:44px;border-radius:11px}
     .nav-pill{padding:.6rem 1.1rem}
     .nav-links{gap:.9rem}
     .nav-links a{font-size:.52rem;letter-spacing:.04em}
     .btn-long{display:none}
     .btn-short{display:inline}
-    .nav-btn{font-size:.52rem;letter-spacing:.06em;padding:.62rem 1rem}
+    .nav-btn{font-size:.58rem;letter-spacing:.06em;padding:.68rem 1.1rem}
     .nav-ham{display:none!important}
     .sec-head{flex-direction:column;padding:0 1.5rem}.sec-head>p{text-align:left}
     .r-track,.r-dots,.dep-track,.dep-dots{padding-left:1.5rem;padding-right:1.5rem}
-    #missao{padding:6rem 1.5rem}.missao-wrap{grid-template-columns:1fr;gap:3rem}.missao-photo{display:none}
+    #missao{padding:6rem 1.5rem}.missao-wrap{grid-template-columns:1fr;gap:4.5rem}.missao-photo{display:none}.missao-photo--inline{display:block;width:100%;max-width:340px;margin:1.8rem auto 2.2rem}.missao-badge{right:0;bottom:-1rem}
+    .hero-bg{background-image:url('imagens/Hero_mobile.png')}
     .valores-list{grid-template-columns:1fr 1fr}
     .v-item{padding-left:1.3rem!important;padding-right:1.3rem!important}
     #depoimentos{padding:6rem 1.5rem}
@@ -562,12 +563,12 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     footer{flex-direction:column;text-align:center;padding:2rem 1.5rem;gap:1rem}
 }
 @media(max-width:430px){
-    #nav{padding:0 .6rem;gap:.35rem}
-    .nav-logo-img{height:28px;width:28px;border-radius:7px}
+    #nav{padding:0 .6rem;gap:.4rem}
+    .nav-logo-img{height:34px;width:34px;border-radius:8px}
     .nav-pill{padding:.55rem .9rem}
     .nav-links{gap:.65rem}
     .nav-links a{font-size:.46rem;letter-spacing:.02em}
-    .nav-btn{font-size:.46rem;letter-spacing:.04em;padding:.55rem .85rem}
+    .nav-btn{font-size:.50rem;letter-spacing:.04em;padding:.60rem .95rem}
     .hero-h1{font-size:2.5rem}
     .r-card{flex:0 0 260px}.r-card--ba{flex:0 0 320px}
     .dep-card{flex:0 0 260px}
@@ -578,6 +579,9 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     .nav-btn{font-size:.42rem;padding:.5rem .7rem}
     .nav-links{gap:.5rem}
 }
+/* ——— CLICK-TO-PLAY ——— */
+.vid-clickplay{cursor:pointer;position:relative;overflow:hidden}
+.vid-clickplay iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 /* ——— CAROUSEL ARROWS ——— */
 .car-wrap{position:relative}
 .car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(10,5,5,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--off-white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
@@ -703,12 +707,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         </div>
         <!-- Video -->
         <div class="r-card r-card--vid">
-            <div class="vid-thumb" style="position:relative;overflow:hidden">
-                <iframe
-                    src="https://drive.google.com/file/d/19KmwdjTmkBsAD8lw7vgkFHFh-rZ9yPMY/preview"
-                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
-                    allow="autoplay" allowfullscreen loading="lazy">
-                </iframe>
+            <div class="vid-thumb vid-clickplay"
+                 data-src="https://player.vimeo.com/video/1191480014?autoplay=1&playsinline=1"
+                 style="background-image:url('https://vumbnail.com/1191480014.jpg');background-size:cover;background-position:center">
+                <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
                 <div class="vid-cap"><span>Depoimento Real · Inês</span></div>
             </div>
         </div>
@@ -737,6 +739,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <div class="missao-text">
             <span class="eyebrow reveal">A Nossa Essência</span>
             <h2 class="reveal d1">Beleza que parece<br>sempre ter sido tua</h2>
+            <div class="missao-photo missao-photo--inline reveal d1">
+                <div class="missao-photo-inner"></div>
+                <div class="missao-badge">Bia<br>Fundadora<br>Hera Beauty</div>
+            </div>
             <blockquote class="missao-quote reveal d1">"Decidi apostar naquilo que me apaixonava: ajudar cada cliente a sentir-se bonita de manhã, sem esforço, sem artificialidade."</blockquote>
             <p class="reveal d2">A Hera Beauty nasceu de uma vontade genuína de devolver autoestima de forma natural. Num mundo cheio de exageros, acredito que a beleza mais bonita é aquela que parece sempre ter sido tua.</p>
             <p class="reveal d2">Cada sessão é um momento de cuidado e atenção total. Não és só mais uma cliente, és a razão pela qual faço o meu melhor todos os dias.</p>
@@ -779,12 +785,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     <div class="dep-track" id="depTrack">
         <!-- Vídeo 1 — Inês -->
         <div class="dep-card dep-card--video">
-            <div class="dep-media" style="position:relative">
-                <iframe
-                    src="https://drive.google.com/file/d/1oZjdQTP-wiTIik2CM6md9Qlkw7L6DCXo/preview"
-                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
-                    allow="autoplay" allowfullscreen loading="lazy">
-                </iframe>
+            <div class="dep-media vid-clickplay"
+                 data-src="https://player.vimeo.com/video/1191480016?autoplay=1&playsinline=1"
+                 style="background-image:url('https://vumbnail.com/1191480016.jpg');background-size:cover;background-position:center top">
+                <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
             </div>
             <div class="dep-body">
                 <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
@@ -813,12 +817,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         </div>
         <!-- Vídeo 2 — Sasha -->
         <div class="dep-card dep-card--video">
-            <div class="dep-media" style="position:relative">
-                <iframe
-                    src="https://drive.google.com/file/d/1hrLKUmHcjRzjugj9zjn54i48bzzUIb7f/preview"
-                    style="position:absolute;inset:0;width:100%;height:100%;border:none"
-                    allow="autoplay" allowfullscreen loading="lazy">
-                </iframe>
+            <div class="dep-media vid-clickplay"
+                 data-src="https://player.vimeo.com/video/1191480017?autoplay=1&playsinline=1"
+                 style="background-image:url('https://vumbnail.com/1191480017.jpg');background-size:cover;background-position:center top">
+                <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
             </div>
             <div class="dep-body">
                 <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
@@ -1207,35 +1209,73 @@ function dragScroll(el){
     el.addEventListener('mousemove',e=>{if(!down)return;el.scrollLeft=sl-(e.pageX-el.offsetLeft-sx)*1.4});
 }
 
-/* Results dots */
-const rT=document.getElementById('rTrack');
-dragScroll(rT);
-const rC=rT.querySelectorAll('.r-card'),rD=document.querySelectorAll('.r-dot');
-rT.addEventListener('scroll',()=>{
-    const cw=rC[0].offsetWidth+16,idx=Math.min(Math.round(rT.scrollLeft/cw),rD.length-1);
-    rD.forEach((d,i)=>d.classList.toggle('active',i===idx));
-},{passive:true});
-rD.forEach(d=>d.addEventListener('click',()=>{
-    rT.scrollTo({left:parseInt(d.dataset.i)*(rC[0].offsetWidth+16),behavior:'smooth'});
-}));
-
-/* Dep dots */
-const dT=document.getElementById('depTrack');
-dragScroll(dT);
-const dC=dT.querySelectorAll('.dep-card'),dD=document.querySelectorAll('.dep-dot');
-dT.addEventListener('scroll',()=>{
-    const cw=dC[0].offsetWidth+16,idx=Math.min(Math.round(dT.scrollLeft/cw),dD.length-1);
-    dD.forEach((d,i)=>d.classList.toggle('active',i===idx));
-},{passive:true});
-dD.forEach(d=>d.addEventListener('click',()=>{
-    dT.scrollTo({left:parseInt(d.dataset.i)*(dC[0].offsetWidth+16),behavior:'smooth'});
-}));
-
-/* Carousel arrows */
-document.getElementById('rPrev').addEventListener('click',()=>rT.scrollBy({left:-(rC[0].offsetWidth+16),behavior:'smooth'}));
-document.getElementById('rNext').addEventListener('click',()=>rT.scrollBy({left:rC[0].offsetWidth+16,behavior:'smooth'}));
-document.getElementById('dPrev').addEventListener('click',()=>dT.scrollBy({left:-(dC[0].offsetWidth+16),behavior:'smooth'}));
-document.getElementById('dNext').addEventListener('click',()=>dT.scrollBy({left:dC[0].offsetWidth+16,behavior:'smooth'}));
+/* Carousel — infinite loop, card centrado */
+function makeCarousel(trackId,prevId,nextId,dotSel,itemSel){
+    const T=document.getElementById(trackId);
+    const dots=[...document.querySelectorAll(dotSel)];
+    dragScroll(T);
+    const orig=[...T.querySelectorAll(itemSel)];
+    const n=orig.length;
+    /* Clona último → prepend, primeiro → append */
+    const cL=orig[n-1].cloneNode(true),cF=orig[0].cloneNode(true);
+    cL.setAttribute('aria-hidden','true');cF.setAttribute('aria-hidden','true');
+    T.insertBefore(cL,orig[0]);T.appendChild(cF);
+    const all=[...T.children]; /* [cL, orig×n, cF] */
+    let cur=1,busy=false;
+    /* Padding dinâmico para garantir que qualquer card pode ser centrado */
+    function setPad(){
+        const pL=Math.max(0,T.clientWidth/2-all[0].offsetWidth/2);
+        const pR=Math.max(0,T.clientWidth/2-all[all.length-1].offsetWidth/2);
+        T.style.paddingLeft=pL+'px';T.style.paddingRight=pR+'px';
+    }
+    /* scrollLeft que centra all[i] no viewport */
+    function pos(i){return Math.max(0,all[i].offsetLeft+all[i].offsetWidth/2-T.clientWidth/2);}
+    /* Salto instantâneo sem interferência do CSS snap */
+    function jump(i){
+        T.style.scrollSnapType='none';
+        T.scrollLeft=pos(i);
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{T.style.scrollSnapType='';}));
+    }
+    function go(i,smooth){smooth?T.scrollTo({left:pos(i),behavior:'smooth'}):jump(i);}
+    function syncDots(i){
+        const r=((i-1)%n+n)%n;
+        dots.forEach((d,j)=>d.classList.toggle('active',j===r));
+    }
+    /* Init após layout */
+    function init(){setPad();requestAnimationFrame(()=>{go(cur,false);syncDots(cur);});}
+    init();
+    window.addEventListener('resize',()=>{setPad();setTimeout(()=>go(cur,false),50);});
+    /* Passo com wrap infinito */
+    function step(dir){
+        if(busy)return;busy=true;cur+=dir;go(cur,true);
+        setTimeout(()=>{
+            if(cur===0){cur=n;go(cur,false);}
+            else if(cur===n+1){cur=1;go(cur,false);}
+            syncDots(cur);busy=false;
+        },420);
+    }
+    document.getElementById(prevId).addEventListener('click',()=>step(-1));
+    document.getElementById(nextId).addEventListener('click',()=>step(1));
+    dots.forEach((d,i)=>d.addEventListener('click',()=>{
+        if(busy)return;cur=i+1;go(cur,true);syncDots(cur);
+    }));
+    /* Drag/swipe: detecta clone após scroll parar */
+    let sT;
+    T.addEventListener('scroll',()=>{
+        let minD=Infinity,cl=cur;
+        all.forEach((c,i)=>{const d=Math.abs(pos(i)-T.scrollLeft);if(d<minD){minD=d;cl=i;}});
+        syncDots(cl);
+        clearTimeout(sT);
+        sT=setTimeout(()=>{
+            if(cl===0){cur=n;go(cur,false);}
+            else if(cl===n+1){cur=1;go(cur,false);}
+            else{cur=cl;busy=false;}
+            syncDots(cur);
+        },300);
+    },{passive:true});
+}
+makeCarousel('rTrack','rPrev','rNext','.r-dot','.r-card');
+makeCarousel('depTrack','dPrev','dNext','.dep-dot','.dep-card');
 
 /* B&A drag slider */
 document.querySelectorAll('[data-slider]').forEach(sl=>{
@@ -1281,6 +1321,19 @@ document.querySelectorAll('[data-slider]').forEach(sl=>{
     }
     setTimeout(tick,1300);
 })();
+
+/* Click-to-play */
+document.querySelectorAll('.vid-clickplay').forEach(el=>{
+    el.addEventListener('click',()=>{
+        const iframe=document.createElement('iframe');
+        iframe.src=el.dataset.src;
+        iframe.allow='autoplay; fullscreen; picture-in-picture';
+        iframe.allowFullscreen=true;
+        el.innerHTML='';
+        el.appendChild(iframe);
+        el.style.cursor='default';
+    },{once:true});
+});
 </script>
 </body>
 </html>
