@@ -582,6 +582,9 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
 /* ——— CLICK-TO-PLAY ——— */
 .vid-clickplay{cursor:pointer;position:relative;overflow:hidden}
 .vid-clickplay iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vid-pause-overlay{position:absolute;inset:0;z-index:3;cursor:pointer}
+.vid-pause-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(0,0,0,.52);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s var(--ease);pointer-events:none}
+.vid-pause-icon.show{opacity:1}
 /* ——— CAROUSEL ARROWS ——— */
 .car-wrap{position:relative}
 .car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(10,5,5,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--off-white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
@@ -708,7 +711,7 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <!-- Video -->
         <div class="r-card r-card--vid">
             <div class="vid-thumb vid-clickplay"
-                 data-src="https://player.vimeo.com/video/1191480014?autoplay=1&playsinline=1"
+                 data-src="https://player.vimeo.com/video/1191480014?autoplay=1&playsinline=1&title=0&byline=0&portrait=0"
                  style="background-image:url('https://vumbnail.com/1191480014.jpg');background-size:cover;background-position:center">
                 <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
                 <div class="vid-cap"><span>Depoimento Real · Inês</span></div>
@@ -786,7 +789,7 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <!-- Vídeo 1 — Inês -->
         <div class="dep-card dep-card--video">
             <div class="dep-media vid-clickplay"
-                 data-src="https://player.vimeo.com/video/1191480016?autoplay=1&playsinline=1"
+                 data-src="https://player.vimeo.com/video/1191480016?autoplay=1&playsinline=1&title=0&byline=0&portrait=0"
                  style="background-image:url('https://vumbnail.com/1191480016.jpg');background-size:cover;background-position:center top">
                 <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
             </div>
@@ -818,7 +821,7 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
         <!-- Vídeo 2 — Sasha -->
         <div class="dep-card dep-card--video">
             <div class="dep-media vid-clickplay"
-                 data-src="https://player.vimeo.com/video/1191480017?autoplay=1&playsinline=1"
+                 data-src="https://player.vimeo.com/video/1191480017?autoplay=1&playsinline=1&title=0&byline=0&portrait=0"
                  style="background-image:url('https://vumbnail.com/1191480017.jpg');background-size:cover;background-position:center top">
                 <div class="play-ring"><svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg></div>
             </div>
@@ -1329,9 +1332,31 @@ document.querySelectorAll('.vid-clickplay').forEach(el=>{
         iframe.src=el.dataset.src;
         iframe.allow='autoplay; fullscreen; picture-in-picture';
         iframe.allowFullscreen=true;
+        iframe.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';
         el.innerHTML='';
-        el.appendChild(iframe);
+        el.style.backgroundImage='none';
         el.style.cursor='default';
+        el.appendChild(iframe);
+        const overlay=document.createElement('div');
+        overlay.className='vid-pause-overlay';
+        const icon=document.createElement('div');
+        icon.className='vid-pause-icon';
+        overlay.appendChild(icon);
+        el.appendChild(overlay);
+        let playing=true,t;
+        const pauseSVG='<svg width="12" height="16" viewBox="0 0 12 16" fill="white"><rect x="0" y="0" width="4" height="16"/><rect x="8" y="0" width="4" height="16"/></svg>';
+        const playSVG='<svg width="14" height="16" viewBox="0 0 14 16" fill="white"><path d="M0 0l14 8-14 8z"/></svg>';
+        function showIcon(svg){icon.innerHTML=svg;icon.classList.add('show');clearTimeout(t);t=setTimeout(()=>icon.classList.remove('show'),1100)}
+        overlay.addEventListener('click',e=>{
+            e.stopPropagation();
+            if(playing){
+                iframe.contentWindow.postMessage(JSON.stringify({method:'pause'}),'https://player.vimeo.com');
+                playing=false;showIcon(playSVG);
+            }else{
+                iframe.contentWindow.postMessage(JSON.stringify({method:'play'}),'https://player.vimeo.com');
+                playing=true;showIcon(pauseSVG);
+            }
+        });
     },{once:true});
 });
 </script>
