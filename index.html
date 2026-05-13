@@ -36,7 +36,7 @@ img{display:block;max-width:100%}
 
 /* Logo — left */
 .nav-logo-wrap{justify-self:start;display:flex;align-items:center}
-.nav-logo-img{height:58px;width:58px;border-radius:12px;object-fit:contain;display:block;transition:opacity .25s}
+.nav-logo-img{height:66px;width:66px;border-radius:14px;object-fit:contain;display:block;transition:opacity .25s}
 .nav-logo-img:hover{opacity:.8}
 
 /* Pill — sits in auto middle column = always page-centered */
@@ -536,10 +536,10 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
     .serv-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:860px){
-    #nav{top:.6rem;padding:0 .9rem;gap:.5rem;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+    #nav{top:.6rem;padding:0 .9rem;grid-template-columns:1fr 1fr}
     #nav.scrolled{top:.4rem}
-    .nav-logo-img{height:44px;width:44px;border-radius:11px}
-    .nav-pill{padding:.6rem 1.1rem}
+    .nav-logo-img{height:50px;width:50px;border-radius:12px}
+    .nav-pill{padding:.6rem 1.1rem;grid-column:1/-1;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
     .nav-links{gap:.9rem}
     .nav-links a{font-size:.52rem;letter-spacing:.04em}
     .btn-long{display:none}
@@ -564,7 +564,7 @@ footer{background:var(--black);padding:2.5rem 3.5rem;border-top:1px solid rgba(2
 }
 @media(max-width:430px){
     #nav{padding:0 .6rem;gap:.4rem}
-    .nav-logo-img{height:34px;width:34px;border-radius:8px}
+    .nav-logo-img{height:40px;width:40px;border-radius:10px}
     .nav-pill{padding:.55rem .9rem}
     .nav-links{gap:.65rem}
     .nav-links a{font-size:.46rem;letter-spacing:.02em}
